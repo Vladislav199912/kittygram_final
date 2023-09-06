@@ -12,12 +12,12 @@ services:
       - pg_data:/var/lib/postgresql/data
   backend:
     build: ./backend/
-    env_file: .env.example
+    env_file: .env
     volumes:
       - static:/backend_static
 
   frontend:
-    env_file: .env.example
+    env_file: .env
     build: ./frontend/
     command: cp -r /app/build/. /frontend_static/
     volumes:
@@ -25,7 +25,7 @@ services:
 
   gateway:
     build: ./kittygram_gateway/
-    env_file: .env.example
+    env_file: .env
     volumes:
       - static:/staticfiles
     ports:
