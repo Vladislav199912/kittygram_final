@@ -15,6 +15,9 @@ services:
     env_file: .env
     volumes:
       - static_volume:/backend_static
+      - media:/app/meida
+    depnds on:
+      - db
   frontend:
     image: vladis72/kittygram_frontend  # Качаем с Docker Hub
     env_file: .env
@@ -26,6 +29,7 @@ services:
     env_file: .env
     volumes:
       - static_volume:/staticfiles/
+      - meida:/app/media
     ports:
       - 9000:80
 
