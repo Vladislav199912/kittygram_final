@@ -17,6 +17,8 @@ services:
     volumes:
       - static:/static/
       - media:/app/media/
+    depends_on:
+      - db
   frontend:
     image: vladis72/kittygram_frontend
     env_file: .env
@@ -31,4 +33,5 @@ services:
     volumes:
       - static:/static
       - media:/app/media/
-
+    depends_on:
+      - backend
