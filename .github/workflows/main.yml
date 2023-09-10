@@ -166,8 +166,8 @@ jobs:
         to: ${{ secrets.TELEGRAM_TO }}
         token: ${{ secrets.TELEGRAM_TOKEN }}
         message: |
-        Деплой ${{ github.repository }} успешно выполнен!
+          Деплой ${{ github.repository }} успешно выполнен!
         
-        Коммит ${{ github.event.commits[0].message }}
+          Коммит ${{ github.event.commits[0].message }}
 
-        Ссылка https://github.com/${{ github.repository }}/commit/${{github.sha}}
+          Ссылка https://github.com/${{ github.repository }}/commit/${{github.sha}}
