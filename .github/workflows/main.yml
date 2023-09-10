@@ -1,7 +1,9 @@
 name: Main Kittygram workflow
 
 on:
-  push
+  push:
+    branches:
+      - main
 
 jobs:
   tests:
@@ -38,7 +40,8 @@ jobs:
         python -m flake8 backend/
         cd backend/
         python manage.py test
-
+        cd .. 
+        pytest
   build_and_push_to_docker_hub:
     name: Push Docker image to DockerHub
     runs-on: ubuntu-latest
@@ -153,7 +156,6 @@ jobs:
           sudo docker compose -f docker-compose.production.yml exec backend python manage.py migrate
           sudo docker compose -f docker-compose.production.yml exec backend python manage.py collectstatic
           sudo docker compose -f docker-compose.production.yml exec backend cp -r /app/collected_static/. /static/static/
-          sudo docker system prune -af
 
   send_message:
     runs-on: ubuntu-latest
